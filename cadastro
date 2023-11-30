@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,27 +17,36 @@
             justify-content: center;
             height: 100vh;
         }
+
         input {
             padding: 15px;
             border-radius: 15px;
             outline: none;
             font-size: 15px;
         }
+
         .contem {
             text-align: center;
         }
+
         button {
             padding: 10px;
             border-radius: 15px;
             outline: none;
             font-size: 15px;
         }
+
         #parabens-msg {
             display: none;
             text-align: center;
-            color:#000000;
+            color: #000000;
             margin-top: 30px;
         }
+
+        #error-msg {
+            color: red;
+        }
+
         .login-link {
             color: #000000;
             text-decoration: none;
@@ -44,18 +54,22 @@
         }
     </style>
 </head>
+
 <body>
     <div class="contem">
         <h1>Cadastro</h1>
-        <input type="text" placeholder="Email">
-        <br></br>
-        <input type="password" placeholder="Senha">
-        <br></br>
-        <button onclick="mostrarMensagem()">Cadastrar</button>
+        <form id="cadastroForm">
+            <input type="text" id="cadas_text" placeholder="Email">
+            <br></br>
+            <input type="password" id="cadas_senha" placeholder="Senha">
+            <br></br>
+            <button id="button_cadas">Cadastrar</button>
+        </form>
         <br></br>
         <div id="parabens-msg">
             <h4>Parabéns pelo seu cadastro!</h4>
         </div>
+        <div id="error-msg"></div>
         <br>
         <a href="login.html" class="login-link">Fazer Login</a>
     </div>
@@ -64,7 +78,53 @@
         function mostrarMensagem() {
             document.getElementById('parabens-msg').style.display = 'block';
         }
+
+        document.getElementById('button_cadas').addEventListener("click", function (event) {
+            event.preventDefault();
+            var cadas_text = document.getElementById("cadas_text").value;
+            var cadas_senha = document.getElementById("cadas_senha").value;
+
+            if (!cadas_text || !cadas_senha) {
+                document.getElementById('error-msg').innerText = "Preencha todos os campos!";
+                return;
+            }
+
+            var dadosParaEnviar = {
+                'text': cadas_text,
+                'senha': cadas_senha
+            };
+
+            localStorage.setItem('dadosCompartilhados', JSON.stringify(dadosParaEnviar));
+
+            var header_dato = {
+                "username": cadas_text,
+                "password": cadas_senha
+            };
+
+            fetch('https://pi-otaviozordan.replit.app/cadastro', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(header_dato)
+            })
+                .then(data_login => {
+                    if (data_login.ok) {
+                        document.getElementById('error-msg').innerText = "";
+                        return data_login.json();
+                    } else {
+                        console.log("Erro no cadastro");
+                    }
+                })
+                .then(pos => {
+                    console.log(pos);
+                    logi();
+                });
+        });
+
+        function logi() {
+            // Your existing login function remains unchanged
+        }
     </script>
 </body>
+
 </html>
 
