@@ -6,44 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <style>
-        body{
-          font-family: Arial, Helvetica, sans-serif;
-          background-image: linear-gradient(45deg, rgb(0, 0, 0, 0.363), rgb(0, 0, 0))
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #383e658e;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-        div{
-          background-color: rgb(0, 0, 0, 0.8);
-          position: absolute;
-          top: 20%;
-          left: 35%;
-          transform: trasnlate(-50%);
-          padding: 80px;
-          border-radius: 15px;
-          color: #fff;
+        input {
+            padding: 15px;
+            border-radius: 15px;
+            outline: none;
+            font-size: 15px;
         }
-        input{
-          padding: 15px;
-          border-radius: 15px;
-          outline: none;
-          font-size: 15px;
+        .contem {
+            text-align: center;
         }
-        button{
+        button {
             padding: 10px;
-          border-radius: 15px;
-          outline: none;
-          font-size: 15px;
+            border-radius: 15px;
+            outline: none;
+            font-size: 15px;
         }
-      </style>
+        #parabens-msg {
+            display: none;
+            text-align: center;
+            color:#000000;
+            margin-top: 30px;
+        }
+        .login-link {
+            color: #000000;
+            text-decoration: none;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-  <div>
-    <h1>Cadastro</h1>
-    <input type="text" placeholder="Email">
-    <br></br>
-    <input type="password" placeholder="Senha">
-    <br></br>
-    <button>Cadastrar</button>
-    <br></br>
-    <a href="login.html">Fazer Login</a>
-  </div>
+    <div class="contem">
+        <h1>Cadastro</h1>
+        <input type="text" placeholder="Email">
+        <br></br>
+        <input type="password" placeholder="Senha">
+        <br></br>
+        <button onclick="mostrarMensagem()">Cadastrar</button>
+        <br></br>
+        <div id="parabens-msg">
+            <h4>Parabéns pelo seu cadastro!</h4>
+        </div>
+        <br>
+        <a href="login.html" class="login-link">Fazer Login</a>
+    </div>
+
+    <script>
+        function mostrarMensagem() {
+            document.getElementById('parabens-msg').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
+
