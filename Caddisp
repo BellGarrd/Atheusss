@@ -4,45 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro-dispositivo</title>
+    <title>Cadastro Disp</title>
     <style>
-        body{
-          font-family: Arial, Helvetica, sans-serif;
-          background-image: linear-gradient(80deg,#73fffe, #6287f8, #383e658e);
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #383e658e;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-        div{
-          background-color: rgba(0, 0, 0, 0.8);
-          position: absolute;
-          top: 20%;
-          left: 35%;
-          transform: trasnlate(-50%);
-          padding: 80px;
-          border-radius: 15px;
-          color: #fff;
+        input {
+            padding: 15px;
+            border-radius: 15px;
+            outline: none;
+            font-size: 15px;
         }
-        input{
-          padding: 15px;
-          border-radius: 15px;
-          outline: none;
-          font-size: 15px;
+        .contem {
+            text-align: center;
         }
-        button{
+        button {
             padding: 10px;
-          border-radius: 15px;
-          outline: none;
-          font-size: 15px;
+            border-radius: 15px;
+            outline: none;
+            font-size: 15px;
         }
-      </style>
+        #parabens-msg {
+            display: none;
+            text-align: center;
+            color:#000000;
+            margin-top: 30px;
+        }
+        .cadastrar-link {
+            color: #000000;
+            text-decoration: none;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-  <div>
-    <h1>Cadastro Dispositivo</h1>
-    <input type="text" placeholder="Código da Sala">
-    <br></br>
-    <input type="password" placeholder="Código do disp.">
-    <br></br>
-    <button>Cadastrar dispositivo</button>
-    <br></br>
-  </div>
+    <div class="contem">
+        <h1>Cadastrar Dispositivo</h1>
+        <input type="text" placeholder="Código da Sala">
+        <br></br>
+        <input type="password" placeholder="Código do disp.">
+        <br></br>
+        <button onclick="mostrarMensagem()">Cadastrar Dispositivo</button>
+        <br></br>
+        <div id="parabens-msg">
+            <h4>O dispositivo foi cadastrado!</h4>
+        </div>
+        <br>
+        <a href="cadastro.html" class="cadastrar-link">Fazer Cadastro</a>
+    </div>
+
+    <script>
+        function mostrarMensagem() {
+            document.getElementById('parabens-msg').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
