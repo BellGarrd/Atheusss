@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,27 +17,36 @@
             justify-content: center;
             height: 100vh;
         }
+
         input {
             padding: 15px;
             border-radius: 15px;
             outline: none;
             font-size: 15px;
         }
+
         .contem {
             text-align: center;
         }
+
         button {
             padding: 10px;
             border-radius: 15px;
             outline: none;
             font-size: 15px;
         }
+
         #parabens-msg {
             display: none;
             text-align: center;
-            color:#000000;
+            color: #000000;
             margin-top: 30px;
         }
+
+        #error-msg {
+            color: red;
+        }
+
         .cadastrar-link {
             color: #000000;
             text-decoration: none;
@@ -44,18 +54,22 @@
         }
     </style>
 </head>
+
 <body>
     <div class="contem">
         <h1>Cadastrar Dispositivo</h1>
-        <input type="text" placeholder="Código da Sala">
-        <br></br>
-        <input type="password" placeholder="Código do disp.">
-        <br></br>
-        <button onclick="mostrarMensagem()">Cadastrar Dispositivo</button>
+        <form id="cadastroDispForm">
+            <input type="text" id="codigo_sala" placeholder="Código da Sala">
+            <br></br>
+            <input type="password" id="codigo_disp" placeholder="Código do disp.">
+            <br></br>
+            <button id="button_cadastro_disp">Cadastrar Dispositivo</button>
+        </form>
         <br></br>
         <div id="parabens-msg">
             <h4>O dispositivo foi cadastrado!</h4>
         </div>
+        <div id="error-msg"></div>
         <br>
         <a href="cadastro.html" class="cadastrar-link">Fazer Cadastro</a>
     </div>
@@ -64,6 +78,22 @@
         function mostrarMensagem() {
             document.getElementById('parabens-msg').style.display = 'block';
         }
+
+        document.getElementById('button_cadastro_disp').addEventListener("click", function (event) {
+            event.preventDefault();
+            var codigo_sala = document.getElementById("codigo_sala").value;
+            var codigo_disp = document.getElementById("codigo_disp").value;
+
+            if (!codigo_sala || !codigo_disp) {
+                document.getElementById('error-msg').innerText = "Preencha todos os campos!";
+                return;
+            }
+
+            // Your existing code to handle the registration process goes here
+            mostrarMensagem();
+        });
     </script>
 </body>
+
 </html>
+
